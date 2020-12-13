@@ -7,5 +7,13 @@ module.exports = {
     quotes: ['error', 'single'],
     semi: 'error',
     indent: ['error', 2]
-  }
+  },
+  overrides: [
+    {
+      files: ['server/*.js'],
+      env: {
+        'node': true,
+      },
+    }
+  ]
 };
