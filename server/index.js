@@ -1,6 +1,7 @@
 require('dotenv').config();
 const { createServer } = require('http');
 const axios = require('axios');
+const url = require('url');
 
 const HOSTNAME = '127.0.0.1';
 const PORT = '8000';
@@ -25,11 +26,14 @@ const server = createServer((req, res) => {
     return;
   }
 
-  const apiParams = routing[req.url];
+  const reqUrl = url.parse(req.url, true);
+  const apiParams = routing[reqUrl.pathname];
   if (apiParams) {
+    const { query = {} } = reqUrl;
     axios.get(apiParams.url, {
       params: {
-        'api-key': apiParams.apikey
+        'api-key': apiParams.apikey,
+        ...query
       }
     }).then(({ data }) => {
       res.end(JSON.stringify(data));

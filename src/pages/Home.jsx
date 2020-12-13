@@ -1,3 +1,7 @@
+import { css } from '@emotion/react';
+
 export const Home  = () => {
-  return <div>Home page</div>;
+  return <div css={css`
+    background-color: red;
+  `}>Home page</div>;
 };

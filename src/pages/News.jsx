@@ -7,7 +7,7 @@ export const News = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios('http://localhost:8000/news');
+        const { data } = await axios('http://localhost:8000/news?show-fields=thumbnail');
         const { results } = data?.response;
         setNews(results);
       } catch (error) {
@@ -17,8 +17,11 @@ export const News = () => {
   }, []);
 
   return <ul>
-    {news.map(newsItem => 
-      <li key={newsItem.id}>{newsItem.webTitle}</li>
+    {news.map(newsItem =>
+      <li key={newsItem.id}>
+        {newsItem.webTitle}
+        <img src={newsItem?.fields?.thumbnail} alt=""/>
+      </li>
     )}
   </ul>;
 };
