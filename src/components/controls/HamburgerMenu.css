@@ -1,28 +1,36 @@
-.container {
-  height: 32px;
-  width: 43px;
+.hamburger {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  z-index: 2;
+  height: 25px;
+  width: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
 
-.bar {
+.hamburger-bar {
   height: 4px;
   width: 100%;
-  background: blue;
-  transform-origin: 8px 4px;
-  transition: transform 0.5s, opacity 0.55s ease;
+  background: var(--main-light-color);
+  transform-origin: 8px 8px;
+  transition: transform 0.5s, opacity 0.55s ease, background 0.5s ease;
   border-radius: 4px;
 }
 
-.container--open .bar-1 {
-  transform: rotate(45deg) translate(2px, -1px);
+.hamburger--open .hamburger-bar {
+  background: var(--main-dark-color);
 }
 
-.container--open .bar-3 {
-  transform: rotate(-45deg) translate(4px, 2px);
+.hamburger--open .hamburger-bar-1 {
+  transform: rotate(45deg) translate(-1px, 3px);
 }
 
-.container--open .bar-2 {
+.hamburger--open .hamburger-bar-3 {
+  transform: rotate(-45deg) translate(7px, 0px);
+}
+
+.hamburger--open .hamburger-bar-2 {
   opacity: 0;
 }
