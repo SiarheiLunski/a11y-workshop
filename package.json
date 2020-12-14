@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@babel/core": "7.12.3",
-    "@emotion/react": "^11.1.2",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.2",
     "@svgr/webpack": "5.4.0",
     "@testing-library/jest-dom": "^5.11.6",
@@ -142,7 +141,6 @@
     "resetMocks": true
   },
   "devDependencies": {
-    "@emotion/babel-preset-css-prop": "^11.0.0",
     "eslint-config-node": "^4.1.0",
     "nodemon": "^2.0.6"
   }

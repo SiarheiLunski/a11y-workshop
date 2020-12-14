@@ -1,0 +1,28 @@
+.container {
+  height: 32px;
+  width: 43px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.bar {
+  height: 4px;
+  width: 100%;
+  background: blue;
+  transform-origin: 8px 4px;
+  transition: transform 0.5s, opacity 0.55s ease;
+  border-radius: 4px;
+}
+
+.container--open .bar-1 {
+  transform: rotate(45deg) translate(2px, -1px);
+}
+
+.container--open .bar-3 {
+  transform: rotate(-45deg) translate(4px, 2px);
+}
+
+.container--open .bar-2 {
+  opacity: 0;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { Layout } from './components/Layout';
+import { MainLayout } from './components/layout/MainLayout';
 
 import { Home } from './pages/Home';
 import { ContactUs } from './pages/ContactUs';
@@ -10,9 +10,9 @@ import { Tickets } from './pages/Tickets';
 
 const LayoutRoute = ({ children, ...props }) => (
   <Route {...props}>
-    <Layout>
+    <MainLayout>
       {children}
-    </Layout>
+    </MainLayout>
   </Route>
 );
 
