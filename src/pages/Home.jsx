@@ -1,3 +1,8 @@
+import { SignUpForm } from 'components/forms/SignUpForm';
+
 export const Home  = () => {
-  return <div>Home page</div>;
+  return <div>
+    <h2>Create account</h2>
+    <SignUpForm />
+  </div>;
 };

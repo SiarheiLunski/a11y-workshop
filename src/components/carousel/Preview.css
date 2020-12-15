@@ -1,0 +1,9 @@
+.carousel-preview {
+  width: 600px;
+  padding: 10px 30px;
+}
+
+.carousel-preview h3 {
+  font-size: 36px;
+  text-align: left;
+}

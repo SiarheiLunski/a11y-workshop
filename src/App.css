@@ -56,8 +56,17 @@ table {
 }
 
 body {
-	font-family: 'Passion One', cursive;
+	font-family: 'Big Shoulders Display', cursive;
 	padding-top: 36px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: var(--main-dark-color);
+	text-align: center;
+}
+
+h2 {
+	margin-bottom: 10px;
 }
 
 a {

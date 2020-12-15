@@ -1,0 +1,10 @@
+.submit-button {
+  border: none;
+  outline: none;
+  background: var(--main-dark-color);
+  color: var(--main-light-color);
+  padding: 10px 15px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-weight: 600;
+}

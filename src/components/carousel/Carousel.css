@@ -1,0 +1,60 @@
+.carousel-container {
+  display: flex;
+}
+
+.carousel {
+  position: relative;
+  height: 300px;
+  width: 500px;
+  overflow: hidden;
+}
+
+.carousel-content {
+  transition: transform ease-out 0.5s;
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.carousel-content--active-0 {
+  transform: translateX(0px);
+}
+
+.carousel-content--active-1 {
+  transform: translateX(-500px);
+}
+
+.carousel-content--active-2 {
+  transform: translateX(-1000px);
+}
+
+.carousel-content-item {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.carousel-arrow {
+  height: 20px;
+  width: 20px;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+  border: 5px solid white;
+  border-top: none;
+  border-right: none;
+}
+
+.carousel-arrow--left {
+  transform: translateX(10px) rotate(45deg);
+  left: 5px;
+}
+
+.carousel-arrow--right {
+  transform: translateX(-10px) rotate(-135deg);
+  right: 5px;
+}
+

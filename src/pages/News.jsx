@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import * as api from 'utils/api';
+import { Carousel } from 'components/carousel/Carousel';
+import './News.css';
 
 export const News = () => {
   const [news, setNews] = useState([]);
@@ -7,9 +9,8 @@ export const News = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios('http://localhost:8000/news?show-fields=thumbnail');
-        const { results } = data?.response;
-        setNews(results);
+        const { data } = await api.getNews();
+        setNews(data);
       } catch (error) {
         console.log(error);
       }
@@ -17,10 +18,11 @@ export const News = () => {
   }, []);
 
   return <ul>
-    {news.map(newsItem =>
+    <Carousel items={news.slice(0, 3)}/>
+    {news.slice(3).map(newsItem =>
       <li key={newsItem.id}>
-        {newsItem.webTitle}
-        <img src={newsItem?.fields?.thumbnail} alt=""/>
+        <h3>{newsItem.title}</h3>
+        <img src={newsItem.thumbnail} alt=""/>
       </li>
     )}
   </ul>;

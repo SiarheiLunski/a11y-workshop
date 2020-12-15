@@ -1,0 +1,5 @@
+.catalog-filter-container {
+  background: var(--grey-color);
+  padding: 10px;
+  width: 200px;
+}
