@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import * as api from 'utils/api';
 import { Carousel } from 'components/carousel/Carousel';
-import './News.css';
+import { NewsItem } from 'components/layout/NewsItem';
 
 export const News = () => {
   const [news, setNews] = useState([]);
@@ -17,13 +17,11 @@ export const News = () => {
     })();
   }, []);
 
+  const secondaryNewsItems = news.slice(3);
   return <ul>
     <Carousel items={news.slice(0, 3)}/>
-    {news.slice(3).map(newsItem =>
-      <li key={newsItem.id}>
-        <h3>{newsItem.title}</h3>
-        <img src={newsItem.thumbnail} alt=""/>
-      </li>
+    {secondaryNewsItems.map((newsItem, idx) => 
+      <NewsItem item={newsItem} isFirst={idx === 0} isLast={idx === secondaryNewsItems.length - 1} />
     )}
   </ul>;
 };

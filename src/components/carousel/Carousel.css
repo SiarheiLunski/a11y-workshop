@@ -1,5 +1,6 @@
 .carousel-container {
   display: flex;
+  margin-bottom: 40px;
 }
 
 .carousel {
@@ -58,3 +59,25 @@
   right: 5px;
 }
 
+.carousel-dot-container {
+  position: absolute;
+  display: flex;
+  bottom: 5px;
+  margin: auto;
+  left: 50%;
+  transform: translateX(-30px);
+}
+
+.carousel-dot {
+  margin: 2px;
+  border-radius: 50%;
+  background: white;
+  width: 15px;
+  height: 15px;
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+.carousel-dot--active {
+  opacity: 1;
+}

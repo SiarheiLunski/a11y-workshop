@@ -1,0 +1,15 @@
+.sidebar-layout {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 200px auto;
+}
+
+.sidebar-layout__content {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 40px;
+}
+
+.sidebar-layout__sidebar {
+  
+}
