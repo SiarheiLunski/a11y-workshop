@@ -17,23 +17,25 @@ const LayoutRoute = ({ children, ...props }) => (
 );
 
 export const Router = () => {
-  return <BrowserRouter>
-    <Switch>
-      <LayoutRoute path="/" exact>
-        <Home />
-      </LayoutRoute>
-      <LayoutRoute path="/contact-us" exact>
-        <ContactUs />
-      </LayoutRoute>
-      <LayoutRoute path="/news" exact>
-        <News />
-      </LayoutRoute>
-      <LayoutRoute path="/catalog" exact>
-        <Catalog />
-      </LayoutRoute>
-      <LayoutRoute path="/tickets" exact>
-        <Tickets />
-      </LayoutRoute>
-    </Switch>
-  </BrowserRouter>; 
+  return (
+    <BrowserRouter>
+      <Switch>
+        <LayoutRoute path="/" exact>
+          <Home />
+        </LayoutRoute>
+        <LayoutRoute path="/contact-us" exact>
+          <ContactUs />
+        </LayoutRoute>
+        <LayoutRoute path="/news" exact>
+          <News />
+        </LayoutRoute>
+        <LayoutRoute path="/catalog" exact>
+          <Catalog />
+        </LayoutRoute>
+        <LayoutRoute path="/tickets" exact>
+          <Tickets />
+        </LayoutRoute>
+      </Switch>
+    </BrowserRouter>
+  ); 
 };

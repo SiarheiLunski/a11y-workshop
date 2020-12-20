@@ -18,10 +18,12 @@ export const News = () => {
   }, []);
 
   const secondaryNewsItems = news.slice(3);
-  return <ul>
-    <Carousel items={news.slice(0, 3)}/>
-    {secondaryNewsItems.map((newsItem, idx) => 
-      <NewsItem item={newsItem} isFirst={idx === 0} isLast={idx === secondaryNewsItems.length - 1} />
-    )}
-  </ul>;
+  return (
+    <ul>
+      <Carousel items={news.slice(0, 3)}/>
+      {secondaryNewsItems.map((newsItem, idx) => 
+        <NewsItem item={newsItem} isFirst={idx === 0} isLast={idx === secondaryNewsItems.length - 1} />
+      )}
+    </ul>
+  );
 };

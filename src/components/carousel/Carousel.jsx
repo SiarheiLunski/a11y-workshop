@@ -1,17 +1,21 @@
 import { useEffect, useState, useRef } from 'react';
+import cc from 'classcat';
 import { Preview } from './Preview';
 import './Carousel.css';
 
-const Arrow = ({ direction, onClick }) => {
-  const className = direction === 'right' 
-    ? 'carousel-arrow carousel-arrow--right' 
-    : 'carousel-arrow carousel-arrow--left';
-  return <div className={className} onClick={onClick} />;
-};
+const Arrow = ({ direction = 'right', onClick }) => (
+  <div
+    className={cc(['carousel-arrow', `carousel-arrow--${direction}`])}
+    onClick={onClick}
+  />
+);
 
-const Dot = ({ isActive, onClick }) => {
-  return <div className={isActive ? 'carousel-dot carousel-dot--active' : 'carousel-dot'} onClick={onClick} />;
-};
+const Dot = ({ isActive, onClick }) => (
+  <div
+    className={cc(['carousel-dot', isActive && 'carousel-dot--active'])}
+    onClick={onClick}
+  />
+);
 
 export const Carousel = ({ items }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -44,25 +48,41 @@ export const Carousel = ({ items }) => {
 
   const selectDot = idx => setActiveIndex(idx);
 
-  return <div className="carousel-container">
-    <div className="carousel">
-      <div className={carouselContentClassName}>
-        {items.map(item => (
-          <div className="carousel-content-item" key={item.id}>
-            <img src={item.thumbnail} alt=""/>
-          </div>
-        ))}
+  return (
+    <div className="carousel-container">
+      <div className="carousel">
+        <div className={carouselContentClassName}>
+          {items.map(item => (
+            <div
+              className="carousel-content-item"
+              key={item.id}
+            >
+              <img
+                src={item.thumbnail}
+                alt=""
+              />
+            </div>
+          ))}
+        </div>
+        <Arrow
+          direction="left"
+          onClick={prevSlide}
+        />
+        <Arrow
+          direction="right"
+          onClick={nextSlide}
+        />
+        <div className="carousel-dot-container">
+          {items.map((item, idx) => (
+            <Dot 
+              key={item.id} 
+              isActive={activeIndex === idx} 
+              onClick={() => selectDot(idx)}
+            />
+          ))}
+        </div>
       </div>
-      <Arrow direction="left" onClick={prevSlide} />
-      <Arrow direction="right" onClick={nextSlide} />
-      <div className="carousel-dot-container">
-        {items.map((item, idx) => <Dot 
-          key={item.id} 
-          isActive={activeIndex === idx} 
-          onClick={() => selectDot(idx)}
-        />)}
-      </div>
+      {items[activeIndex] && <Preview item={items[activeIndex]} />}
     </div>
-    {items[activeIndex] && <Preview item={items[activeIndex]} />}
-  </div>;
+  );
 };

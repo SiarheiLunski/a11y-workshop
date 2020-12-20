@@ -1,7 +1,7 @@
 import './SubmitButton.css';
 
-export const SubmitButton = ({ children }) => {
-  return <button className="submit-button">
+export const SubmitButton = ({ children }) => (
+  <button className="submit-button">
     {children}
-  </button>;
-};
+  </button>
+);

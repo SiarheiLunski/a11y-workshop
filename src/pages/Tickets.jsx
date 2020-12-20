@@ -1,5 +1,7 @@
 export const Tickets = () => {
-  return <div>
+  return (
+    <div>
     Tickets
-  </div>;
+    </div>
+  );
 };

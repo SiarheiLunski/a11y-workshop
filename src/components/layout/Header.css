@@ -7,4 +7,20 @@
   background-color: var(--main-dark-color);
   color: var(--main-color);
   z-index: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header__controls {
+  display: flex;
+  align-items: center;
+  padding: 5px 20px;
+}
+
+.header__cart {
+  color: white;
+}
+
+.header__cart span {
+  margin: 5px;
 }

@@ -4,6 +4,9 @@
   "private": true,
   "dependencies": {
     "@babel/core": "7.12.3",
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.13",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.2",
     "@svgr/webpack": "5.4.0",
     "@testing-library/jest-dom": "^5.11.6",
@@ -20,6 +23,7 @@
     "bfj": "^7.0.2",
     "camelcase": "^6.1.0",
     "case-sensitive-paths-webpack-plugin": "2.3.0",
+    "classcat": "^4.1.0",
     "css-loader": "4.3.0",
     "dotenv": "^8.2.0",
     "dotenv-expand": "5.1.0",
