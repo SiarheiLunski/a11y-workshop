@@ -15,10 +15,10 @@ export const CatalogItem = ({ item, addToCart, removeFromCart, selected }) => {
       </div>
       {
         selected ?
-          <span className="catalog-item-container__cart--selected" onClick={() => removeFromCart(item)}>
+          <span className="catalog-item-container__cart--selected" onClick={() => removeFromCart(item.id)}>
             <FontAwesomeIcon icon={faTrashAlt} />
           </span>
-          : <span className="catalog-item-container__cart" onClick={() => addToCart(item)}>
+          : <span className="catalog-item-container__cart" onClick={() => addToCart(item.id)}>
             <FontAwesomeIcon icon={faCartPlus} />
           </span>
       }

@@ -1,0 +1,12 @@
+.header-cart-control {
+  color: white;
+  position: relative;
+}
+
+.header-cart-control span {
+  margin: 5px;
+}
+
+.header-cart-control:hover .header-cart-items-list {
+  display: block;
+}
