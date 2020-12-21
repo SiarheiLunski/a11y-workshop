@@ -7,6 +7,6 @@
   margin: 5px;
 }
 
-.header-cart-control:hover .header-cart-items-list {
+.header-cart-control:hover .header-cart-products-list {
   display: block;
 }

@@ -55,11 +55,16 @@ table {
 	--blue-light-color: #4CA6E4;
 	--grey-color: #EAEEEF;
 	--green-color: #5EBA7D;
+	--red-color: #D46060;
 }
 
 body {
-	font-family: 'Big Shoulders Display', cursive;
+	font-family: 'Jura', sans-serif;
 	padding-top: 36px;
+}
+
+button {
+	font-family: 'Jura', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {

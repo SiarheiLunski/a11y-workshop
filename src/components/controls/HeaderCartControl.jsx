@@ -7,7 +7,7 @@ import './HeaderCartControl.css';
 
 export const HeaderCartControl = () => {
   const catalogProducts = useCatalog();
-  const { selectedProducts, addToCart, removeFromCart } = useCart();
+  const { selectedProducts, addToCart, decreaseAmount, removeFromCart } = useCart();
   const amountOfItems = selectedProducts.reduce((sum, { amount }) => sum + amount, 0);
 
   return (
@@ -20,6 +20,7 @@ export const HeaderCartControl = () => {
           ...selectedProduct,
         }))}
         addToCart={addToCart}
+        decreaseAmount={decreaseAmount}
         removeFromCart={removeFromCart}
       />
     </div>

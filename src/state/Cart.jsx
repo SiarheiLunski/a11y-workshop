@@ -15,7 +15,7 @@ export const CartProvider = ({ children, initialCart = [] }) => {
     localStorage.setItem('selectedProducts', JSON.stringify(selectedProducts));
   }, [selectedProducts]);
 
-  const addToCart = productId => {
+  const addToCart = (productId, amount = 1) => {
     const alreadyInCart = selectedProducts.some(selected => selected.id === productId);
     const result = alreadyInCart 
       ? selectedProducts.map(selected => 
@@ -23,11 +23,15 @@ export const CartProvider = ({ children, initialCart = [] }) => {
           ? { ...selected, amount: selected.amount + 1 }
           : selected
       ) 
-      : [...selectedProducts, { id: productId, amount: 1 }];
+      : [...selectedProducts, { id: productId, amount }];
     setSelectedProducts(result);
   };
 
   const removeFromCart = productId => {
+    setSelectedProducts(selectedProducts.filter(selected => selected.id !== productId));
+  };
+
+  const decreaseAmount = productId => {
     const product = selectedProducts.find(selected => selected.id === productId);
     if (!product) return;
     const result = selectedProducts.reduce((acc, selected) => {
@@ -42,7 +46,8 @@ export const CartProvider = ({ children, initialCart = [] }) => {
       value={{
         selectedProducts,
         addToCart,
-        removeFromCart
+        removeFromCart,
+        decreaseAmount
       }}
     >
       {children}

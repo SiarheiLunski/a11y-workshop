@@ -1,0 +1,23 @@
+.catalog-item-button {
+  border-radius: 5px;
+  padding: 5px 5px;
+  text-align: center;
+  box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.1);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.catalog-item-button--info {
+  color: var(--blue-light-color);
+}
+
+.catalog-item-button--info:hover {
+  background: var(--blue-light-color);
+  color: white;
+  box-shadow: none;
+}
+
+.catalog-item-button--danger {
+  background: var(--red-color);
+  color: white;
+}
