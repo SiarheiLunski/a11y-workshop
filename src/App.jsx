@@ -5,14 +5,8 @@ import './App.css';
 
 export const CatalogContext = createContext([]);
 
-const ejectProductItem = (products, productId) => products.reduce(({ filtered, product }, currentProduct) => {
-  if (currentProduct.id === productId) return { filtered, product: currentProduct };
-  return { filtered: [...filtered, currentProduct], product };
-}, { filtered: [] });
-
 export const App = () => {
   const [products, setProducts] = useState([]);
-  // TODO: Replace with Set
   const [selectedProducts, setSelectedProducts] = useState([]);
 
   useEffect(() => {
@@ -37,24 +31,25 @@ export const App = () => {
   }, [selectedProducts]);
 
   const addToCart = productId => {
-    const { 
-      product = { id: productId, amount: 0 }, 
-      filtered 
-    } = ejectProductItem(selectedProducts, productId);
-    product.amount += 1;
-    setSelectedProducts([...filtered, product]);
+    const alreadyInCart = selectedProducts.some(selected => selected.id === productId);
+    const result = alreadyInCart 
+      ? selectedProducts.map(selected => 
+        selected.id === productId 
+          ? { ...selected, amount: selected.amount + 1 }
+          : selected
+      ) 
+      : [...selectedProducts, { id: productId, amount: 1 }];
+    setSelectedProducts(result);
   };
 
   const removeFromCart = productId => {
-    const product = selectedProducts.find(({ id }) => id === productId);
+    const product = selectedProducts.find(selected => selected.id === productId);
     if (!product) return;
-    const filteredProducts = selectedProducts.filter(selectedProductsItem => selectedProductsItem.id !== productId);
-    if (product.amount > 1) {
-      product.amount -= 1;
-      setSelectedProducts([...filteredProducts, product]);
-    } else {
-      setSelectedProducts(filteredProducts);
-    }
+    const result = selectedProducts.reduce((acc, selected) => {
+      if (selected.id !== productId) return [...acc, selected];
+      return selected.amount > 1 ? [...acc, { ...selected, amount: selected.amount - 1 }] : acc;
+    }, []);
+    setSelectedProducts(result);
   };
 
   return (
