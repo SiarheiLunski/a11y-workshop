@@ -1,22 +1,25 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { CatalogFilter } from 'components/forms/CatalogFilter';
 import { SidebarLayout } from 'components/layout/SidebarLayout';
 import { CatalogItem } from 'components/layout/CatalogItem';
-import { CatalogContext } from 'App';
+import { useCart } from 'state/Cart';
+import { useCatalog } from 'state/Catalog';
 
 const PAGE_ITEMS = 6;
 
 export const Catalog = () => {
   const [currentPage, setCurrentPage] = useState(0);
-  const { products, selectedProducts, addToCart, removeFromCart } = useContext(CatalogContext);
+  const catalogProducts = useCatalog();
+  const { selectedProducts, addToCart, removeFromCart } = useCart();
 
   return (
     <div>
       Catalog
       <SidebarLayout>
         <CatalogFilter />
-        {products.map(product => (
+        {catalogProducts.map(product => (
           <CatalogItem
+            key={product.id}
             item={product}
             addToCart={addToCart}
             removeFromCart={removeFromCart}

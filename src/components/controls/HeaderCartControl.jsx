@@ -1,20 +1,22 @@
-import { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
-import { CatalogContext } from 'App';
+import { useCart } from 'state/Cart';
+import { useCatalog } from 'state/Catalog';
 import { HeaderCartProductsList } from './HeaderCartProductsList';
 import './HeaderCartControl.css';
 
 export const HeaderCartControl = () => {
-  const { products, selectedProducts, addToCart, removeFromCart } = useContext(CatalogContext);
+  const catalogProducts = useCatalog();
+  const { selectedProducts, addToCart, removeFromCart } = useCart();
+  const amountOfItems = selectedProducts.reduce((sum, { amount }) => sum + amount, 0);
 
   return (
     <div className="header-cart-control">
-      <span>{selectedProducts.length}</span>
+      <span>{amountOfItems}</span>
       <FontAwesomeIcon icon={faCartPlus} />
       <HeaderCartProductsList
         cartProducts={selectedProducts.map(selectedProduct => ({ 
-          ...products.find(({ id }) => id === selectedProduct.id),
+          ...catalogProducts.find(({ id }) => id === selectedProduct.id),
           ...selectedProduct,
         }))}
         addToCart={addToCart}
