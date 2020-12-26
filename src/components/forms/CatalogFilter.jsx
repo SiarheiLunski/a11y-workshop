@@ -1,3 +1,4 @@
+import { MultiThumbSlider } from 'components/controls/MultiThumbSlider';
 import './CatalogFilter.css';
 
 export const CatalogFilter = ({ filterOptions }) => {
@@ -78,7 +79,7 @@ export const CatalogFilter = ({ filterOptions }) => {
           <div>
             <input type="number" placeholder="From"/>
             <input type="number" placeholder="To"/>
-            <input type="range" min="1" max="2000"/>
+            <MultiThumbSlider min={1} max={2000} />
           </div>
         </div>
         {/* Select */}

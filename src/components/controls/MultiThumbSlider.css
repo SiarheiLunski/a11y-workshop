@@ -1,0 +1,113 @@
+.multi-thumb-slider-container {
+  --col: #000;
+  --dif: calc(var(--max) - var(--min));
+  --thumb-diameter: 1em;
+  --thumb-radius: calc(0.5 * var(--thumb-diameter));
+  --usefull-width: calc(10em - var(--thumb-diameter));
+
+  display: grid;
+  grid-template-rows: max-content 1em;
+  overflow: hidden;
+  position: relative;
+  margin: 1em auto;
+  width: 10em;
+  background: linear-gradient(0deg, #ccc 1em, transparent 0);
+  grid-template: repeat(2, max-content) 1em / 1fr 1fr;
+}
+
+.multi-thumb-slider-container::before,
+.multi-thumb-slider-container::after {
+  content: '';
+  grid-column: 1 / span 2;
+  grid-row: 3;
+  height: 100%;
+  background: var(--main-color);
+}
+
+.multi-thumb-slider-container::before {
+  margin-left: calc(var(--thumb-radius) + (var(--a) - var(--min)) / var(--dif) * var(--usefull-width));
+  width: calc((var(--b) - var(--a)) / var(--dif) * var(--usefull-width));
+}
+
+.multi-thumb-slider-container::after {
+  margin-left: calc(var(--thumb-radius) + (var(--b) - var(--min)) / var(--dif) * var(--usefull-width));
+  width: calc((var(--a) - var(--b)) / var(--dif) * var(--usefull-width));
+}
+
+.multi-thumb-slider-container input[type=range] {
+  grid-column: 1;
+  grid-row: 2;
+  margin: 0;
+  background: none;
+  color: var(--col);
+  font: inherit;
+  pointer-events: none;
+  grid-column: 1 / span 2;
+  grid-row: 3;
+  z-index: 1;
+  cursor: grab;
+}
+
+.multi-thumb-slider-container input[type=range]:focus {
+  z-index: 2;
+  outline: dotted 1px currentcolor;
+}
+
+.multi-thumb-slider-container input[type=range]:active {
+  cursor: grabbing;
+}
+
+.multi-thumb-slider-container input[type=range]:focus,
+.multi-thumb-slider-container input[type=range]:focus + output {
+  --col: var(--blue-light-color);
+}
+
+.multi-thumb-slider-container input[type=range]::-webkit-slider-runnable-track, 
+.multi-thumb-slider-container input[type=range]::-webkit-slider-thumb, 
+.multi-thumb-slider-container input[type=range] {
+  -webkit-appearance: none;
+}
+
+.multi-thumb-slider-container input[type=range]::-webkit-slider-runnable-track,
+.multi-thumb-slider-container input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 100%;
+  background: none;
+}
+
+.multi-thumb-slider-container input[type=range]::-webkit-slider-thumb {
+  border: none;
+  width: 1em;
+  height: 1em;
+  border-radius: 0;
+  background: currentcolor;
+  pointer-events: auto;
+  background:
+    linear-gradient(90deg, var(--col) 2px, transparent 0) calc(var(--thumb-radius) - 1px),
+    radial-gradient(circle, var(--col) calc(var(--thumb-radius) - 1px), transparent var(--thumb-radius));
+}
+
+.multi-thumb-slider-container input[type=range]::-moz-range-thumb {
+  border: none;
+  width: 1em;
+  height: 1em;
+  border-radius: 0;
+  background: currentcolor;
+  pointer-events: auto;
+  background:
+    linear-gradient(90deg, var(--col) 2px, transparent 0) calc(var(--thumb-radius) - 1px),
+    radial-gradient(circle, var(--col) calc(var(--thumb-radius) - 1px), transparent var(--thumb-radius));
+}
+
+.multi-thumb-slider-container output {
+  grid-row: 2;
+}
+
+.multi-thumb-slider-container output:last-child {
+  text-align: right;
+}
+
+.multi-thumb-slider-container output::after {
+  content: counter(c);
+  counter-reset: c var(--c);
+}
